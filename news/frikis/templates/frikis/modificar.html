@@ -1,0 +1,18 @@
+
+{% extends "frikis/base.html" %}
+
+{% load static %}
+
+
+{% block content %}
+<tr></tr>
+<div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Titulo</label>
+    <input type="text" class="form-control" id="{{ tusnoticias.titulo }}" placeholder="text">
+  </div>
+  <div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+    <textarea class="form-control" id="" rows="3"></textarea>
+  </div>
+
+{% endblock %}

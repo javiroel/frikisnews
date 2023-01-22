@@ -1,0 +1,29 @@
+{% extends "frikis/base.html" %}
+
+{% load static %}
+
+   {% block content %}
+
+   <h1>Editar noticia</h1>
+
+   <table>
+    <tr>
+      <th>Titulo</th>
+      <th>Noticia</th> 
+      <th>Fecha</th>
+    </tr>
+
+    {% for tusnoticias in noticias %}
+    <tr>
+      <td>{{ tusnoticias.titulo }}</td>
+      <td>{{ tusnoticias.noticia_text }}</td> 
+      <td>{{ tusnoticias.pub_date }}</td>
+      <td><a class="btn-btn-warning" href="{% url 'modificar' tusnoticias.id %}">Editar</a> </td>
+    </tr>
+
+    {% endfor %}
+    
+  
+
+ {% endblock %}
+

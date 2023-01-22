@@ -1,0 +1,25 @@
+
+{% extends "frikis/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<h1>Principales Noticias</h1>
+<ul>
+  {% for tusnoticias in latest_news %}
+  <h3 class="newstitle">
+
+   {{ tusnoticias.titulo }} </h3>
+
+   <p class="listnews">
+
+   {{ tusnoticias.noticia_text }}
+
+</p>
+  {% endfor %}
+ <a href="">Modificar</a>
+       
+</ul>
+
+{% endblock %}

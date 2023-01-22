@@ -1,0 +1,51 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+ {% load static %}
+
+<title>NOTICIAS</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet"  href="{% static 'frikis/css/main.css' %}" />
+<link rel="stylesheet"  href="{% static 'frikis/css/skin.css' %}" />
+<link rel="stylesheet"  href="{% static 'frikis/css/list.css' %}" />
+<script type="text/javascript" src="{% static 'frikis/javascript/cufon-yui.js' %}"></script>
+<script type="text/javascript" src="{% static 'frikis/javascript/font.font.js' %}"></script>
+
+</head>
+<body>
+<!-- START PAGE SOURCE -->
+<div class="main">
+  <div id="header" class="box">
+    <h1 id="logo"> Noticias <span>Frikis</span></h1>
+    <ul id="nav">
+      <li class="current"><a href="{% url 'inicio' %}">Homepage</a></li>
+      <li><a href="{% url 'registro' %}">Registro</a></li>
+      <li><a href="{% url 'creanews' %}">Cargar Noticias</a></li>
+
+      {% if user.is_authenticated %}
+
+       <li><a href="{% url 'logout'  %}">Cerrar sesion</a></li>
+
+       <li><a href="#">@{{ user.username }}</a></li>
+      
+      {% else % }
+
+       <li><a href="{% url 'login'  %}">Iniciar sesion</a> </li>
+
+      {% endif %}
+    </ul>
+  </div>
+  
+{% block content %} {% endblock %}
+<div id="footer">
+  <div class="main box">
+    <p class="f-right t-right">Design by <a href="">Frikis</a></p>
+    <p class="f-left">Copyright &copy;&nbsp;2023 <a href="#">Frikis en el aire</a></p>
+  </div>
+</div>
+<script type="text/javascript">Cufon.now();</script>
+<!-- END PAGE SOURCE -->
+</body>
+</html>
