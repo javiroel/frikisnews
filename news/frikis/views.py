@@ -44,7 +44,7 @@ def registro(request):
         form = FormularioRegistro(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('frikis/index.html')
+            return redirect('login')
     else:
         form = FormularioRegistro()
     return render(request, 'frikis/registro.html', {'form': form})
