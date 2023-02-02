@@ -5,6 +5,8 @@
 
 {% block content %}
 
+{% load crispy_forms_tags %}
+
 <h1> Crear Noticias</h1>
 
 <form class="form1" method="post" action="{% url 'creanews' %}"> 
@@ -12,13 +14,13 @@
  {% csrf_token %}
  <table class="formn">
 
-    {{ form.as_table }}
+    {{ form | crispy }}
 
  </table>
 
  
     
- <input type="submit" class="button button1" value="Guardar noticia">
+ <input type="submit" class="btn btn-primary" value="Guardar noticia">
 
 
 </form>

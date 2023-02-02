@@ -9,7 +9,7 @@ class CrearNoticia(forms.ModelForm):
 
       class Meta:
         model = tusnoticias
-        fields = ['titulo','noticia_text','pub_date']
+        fields = ['id','titulo','noticia_text','pub_date']
 
         widgets = {
 
@@ -39,7 +39,7 @@ class EditaNoticia(forms.ModelForm):
 
       class Meta:
         model = tusnoticias
-        fields = ['titulo','noticia_text','pub_date']
+        fields = ['titulo','noticia_text']
 
         widgets = {
 

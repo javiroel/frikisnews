@@ -1,5 +1,5 @@
 from pyexpat.errors import messages
-from django.shortcuts import render, redirect,get_list_or_404
+from django.shortcuts import render, redirect,get_list_or_404,get_object_or_404
 from .models import tusnoticias
 from frikis.forms import CrearNoticia, EditaNoticia
 import datetime
@@ -81,3 +81,21 @@ def listar(request):
      noticias= tusnoticias.objects.all()
      data = {'noticias':noticias}
      return render(request, 'frikis/listar.html', data)
+
+
+def update_news(request, id):
+
+    noticia= get_object_or_404(tusnoticias, id=id)
+
+    data= {
+
+        'form': EditaNoticia(instance=noticia)
+    }
+    
+    if request.method == 'POST':
+        formulario= EditaNoticia(data=request.POST, instance=noticia)  
+        if formulario.is_valid():
+          formulario.save()
+          return redirect(to="listar")
+        data["form"] = formulario  
+    return render(request, 'frikis/modificar.html', data)

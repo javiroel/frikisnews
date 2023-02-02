@@ -5,20 +5,28 @@
 
 {% block content %}
 
+{% load crispy_forms_tags %}
+
 <h1>Principales Noticias</h1>
-<ul>
+
+<div class="col-12 col-md-6 offset-mb-3">
+
+ 
+ <br>
+ <ul>
   {% for tusnoticias in latest_news %}
   <h3 class="newstitle">
 
    {{ tusnoticias.titulo }} </h3>
 
-   <p class="listnews">
+  <p class="listnews">
 
    {{ tusnoticias.noticia_text }}
 
-</p>
+  </p>
   {% endfor %}
- <a href="">Modificar</a>
+
+</div>
        
 </ul>
 

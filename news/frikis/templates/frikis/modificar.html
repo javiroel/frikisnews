@@ -3,16 +3,51 @@
 
 {% load static %}
 
-
 {% block content %}
-<tr></tr>
-<div class="mb-3">
-    <label for="exampleFormControlInput1" class="form-label">Titulo</label>
-    <input type="text" class="form-control" id="{{ tusnoticias.titulo }}" placeholder="text">
-  </div>
-  <div class="mb-3">
-    <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-    <textarea class="form-control" id="" rows="3"></textarea>
-  </div>
 
-{% endblock %}
+ {% load crispy_forms_tags %}
+
+ <div class="row">
+
+<div class="col-12 col-md-6 offset-md-3">
+    
+  <h2>Modificar noticia</h2> 
+  
+  <div class="d-flex justify-content-end">
+
+  
+  <a href="{% url 'listar' %}">Volver</a>
+  
+ </div>
+  <br>
+
+  <form action="" method="post" , enctype="multipart/form-data">
+
+    {% csrf_token %}
+    {{ form | crispy }}
+  
+    <br>
+  
+    <div class="d-flex justify-content-end">
+
+  <hr>
+  
+      <input type="submit", value="Guardar" , class="btn btn-primary">
+      &nbsp 
+      <input type="reset" value="Cancelar", class="btn btn-secundary">
+    
+    </div>
+  
+  
+  </form>
+
+
+</div>
+
+
+
+ </div>
+
+ 
+
+{% endblock %}  
