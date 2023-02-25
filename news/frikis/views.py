@@ -5,8 +5,9 @@ from frikis.forms import CrearNoticia, EditaNoticia
 import datetime
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django import forms
+from django.contrib import messages
 from .forms import FormularioLogin
-from .forms import FormularioRegistro
+from .forms import FormularioRegistro,ContactForm
 from django.contrib.auth import login, authenticate
 
 
@@ -69,6 +70,9 @@ def login(request):
         form = FormularioLogin()
     return render(request, 'frikis/login.html', {'form': form})    
 
+
+@login_required
+
 def edit(request, tusnoticias_id):
 
     noticia= tusnoticias.objects.filter(id=tusnoticias_id).first()
@@ -77,12 +81,15 @@ def edit(request, tusnoticias_id):
   
     return render(request,'frikis/modificar.html',{'form': formulario, 'noticia':noticia})      
 
+
+@login_required
 def listar(request):
      noticias= tusnoticias.objects.all()
      data = {'noticias':noticias}
      return render(request, 'frikis/listar.html', data)
 
 
+@login_required
 def update_news(request, id):
 
     noticia= get_object_or_404(tusnoticias, id=id)
@@ -99,3 +106,28 @@ def update_news(request, id):
           return redirect(to="listar")
         data["form"] = formulario  
     return render(request, 'frikis/modificar.html', data)
+
+def credits(request):
+    return render(request, 'frikis/credits.html')
+
+def perfil(request):
+    return render(request, 'frikis/perfil.html')
+
+def contact_view(request):
+    form = ContactForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        messages.success(request,"Mensaje enviado correctamente, Muchas gracias!")
+        form = ContactForm()
+
+    context = {
+        'form': form
+    }
+
+    return render(request, "frikis/contact.html", context )
+
+@login_required
+def delete(request, tusnoticias_id):
+    item = get_object_or_404(tusnoticias, id=tusnoticias_id)
+    item.delete()
+    return redirect('listar')

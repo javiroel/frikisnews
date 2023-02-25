@@ -1,0 +1,52 @@
+
+{% extends "base.html" %}
+
+
+{% block content %}  
+
+{% load crispy_forms_tags %}
+
+<style>
+
+.container{
+
+background-color: white;
+  padding-top: 20px;
+  padding-right: 300px;
+  padding-bottom: 50px;
+  padding-left: 300px;
+  margin-top: 10px;}
+
+
+</style>
+
+<div class="container">
+
+  <div class="">
+
+     <div class="">
+ 
+   <h2 style="text-align: center;">Ingresar tus credenciales</h2>
+   <hr style="color:lightgray ">
+   <form action="" method="post">
+
+   {% csrf_token %}
+ 
+   {{ form | crispy }}
+ 
+   <hr style="color: lightgray;">
+   <input type="submit" , class="btn btn-primary" , value="Ingresar">
+
+   <a href="{% url 'inicio' %}", style="margin-left: 10px;">ir al home</a>
+   
+   <a href="{% url 'registro' %}", style="margin: 10px;">Sign out</a>
+   
+
+
+  </div>
+
+  </form>
+
+</div>
+
+{% endblock %}

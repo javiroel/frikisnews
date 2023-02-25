@@ -1,0 +1,75 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+
+<style>
+
+.contenido{
+
+ margin-left: 100px;	
+ margin-right: 100px;
+ margin-top: 40px;
+ background-color: rgba(244, 244, 244, 0.995);
+ border-style:dashed;
+
+}	
+
+.contenido div{
+
+ margin-left: 0px;
+ margin-right: 50px;
+
+}
+
+</style>
+<h1 style="text-align: center;color: gray; font-size: 48px;", class="glyphicon glyphicon-send"> Chat</h1>
+<div class="contenido">
+ 
+ <br>
+ {% if request.user.is_authenticated %}
+ {% endif %}
+ <div
+	class="chat__item__container"
+	id="id_chat_item_container"
+	style="font-size: 20px"
+	>
+	<br />
+	<input style="margin-left: 2px;" ,type="text" id="id_message_send_input" />
+	<button type="submit" id="id_message_send_button">Send</button>
+	<br />
+	<br />
+ </div>
+	<script>
+	const chatSocket = new WebSocket("ws://" + window.location.host + "/");
+	chatSocket.onopen = function (e) {
+		console.log("The connection was setup successfully !");
+	};
+	chatSocket.onclose = function (e) {
+		console.log("Something unexpected happened !");
+	};
+	document.querySelector("#id_message_send_input").focus();
+	document.querySelector("#id_message_send_input").onkeyup = function (e) {
+		if (e.keyCode == 13) {
+		document.querySelector("#id_message_send_button").click();
+		}
+	};
+	document.querySelector("#id_message_send_button").onclick = function (e) {
+		var messageInput = document.querySelector(
+		"#id_message_send_input"
+		).value;
+		chatSocket.send(JSON.stringify({ message: messageInput, username : "{{request.user.username}}"}));
+	};
+	chatSocket.onmessage = function (e) {
+		const data = JSON.parse(e.data);
+		var div = document.createElement("div");
+		div.innerHTML = data.username + " : " + data.message;
+		document.querySelector("#id_message_send_input").value = "";
+		document.querySelector("#id_chat_item_container").appendChild(div);
+	};
+	</script>
+
+</div>
+{% endblock %}

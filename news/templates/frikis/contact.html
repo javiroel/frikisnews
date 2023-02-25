@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+
+{% load static %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+
+<style>
+
+.contenido{
+
+margin-left: 150px;
+margin-right: 150px;
+
+
+}
+
+.mensaje{
+
+margin-left: 300px;
+margin-right: 300px;
+text-align: center;
+margin-top: 20px;
+
+
+
+}
+
+</style>
+
+
+{% if messages %}
+    {% for message in messages %}
+
+<div class="mensaje">
+
+        <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+{% endif %}
+</div>
+
+ <div class="contenido">
+  <h1 style="text-align: center;", class="glyphicon glyphicon-envelope"></h1>
+  <h2 style="text-align: center;", class="">Contactanos</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form | crispy }}
+    <br>
+    <button type="submit" class="btn btn-primary">Send</button>
+  </form>
+
+</div>
+
+
+
+{% endblock %}

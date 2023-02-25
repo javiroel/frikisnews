@@ -1,0 +1,86 @@
+
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+
+<style>
+
+.contenido{
+
+width: 70%;
+background-color: white;
+padding-left: 2%;
+margin-left: 15%;
+border-style: dotted;
+}
+
+.noticia{
+
+
+margin-left: 0;
+margin-right: 0;
+background-color: white;
+padding: 12px;
+
+}
+
+.newstitle{
+
+font-size: 32px;
+text-align: center;
+
+
+}
+
+.foto{
+
+margin: 5px;
+width: 80px;
+height: auto;
+
+
+}
+
+.listnews{
+
+
+font-size: 18px;
+font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+
+</style>
+
+<img src="{% static 'design/latest-news-icon.webp' %}" alt="" class="foto">
+
+<div class="contenido">
+
+
+  <h1 style="text-align: center;font-family: Arial, Helvetica, sans-serif;", class="">Principales Noticias</h1>
+
+  <br>
+  <div class="noticia">
+    {% for tusnoticias in latest_news %}
+     <h3 style="text-align: left;" class="newstitle">
+
+    {{ tusnoticias.titulo }} </h3>
+
+
+    <p  class="listnews">
+
+     {{ tusnoticias.noticia_text }}
+
+    </p>
+    {% endfor %}
+
+  </div>
+
+</div>
+       
+
+
+{% endblock %}

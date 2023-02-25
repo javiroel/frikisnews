@@ -1,0 +1,78 @@
+
+{% extends "base.html" %}
+
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+
+
+<style>
+
+div{
+
+background-color:  rgba(255, 255, 255, 0.648);
+
+
+}    
+
+div h2 {
+
+text-align: center;
+margin: 20px;
+
+}
+
+.content {
+
+text-align: left;
+padding: 0;
+margin-left: 200px;
+margin-right: 200px;
+background-color: rgba(230, 229, 229, 0.967);
+margin-top: 30px;
+
+
+}
+
+.content div{
+
+background-color: white;
+margin-left: 20px;
+margin-right: 20px;
+margin-top: 10px;
+
+}
+
+.botom{
+
+margin-right: 10px;
+
+}
+</style>
+
+
+     <div class="content">
+
+     <h2>Registro de usuario</h2>
+
+     <div class="">
+    
+
+          <form method="post" action="{% url 'registro' %}">
+             {% csrf_token %}
+             <table>
+
+             {{ form | crispy }}
+
+             </table>
+
+              <span class="botom"></span><input type="submit" value="Registrarme"></span>
+             
+          </form>
+
+      </div>
+
+     </div>
+
+{% endblock %}

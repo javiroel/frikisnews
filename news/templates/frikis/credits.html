@@ -1,0 +1,53 @@
+
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<style>
+
+.title {
+
+
+color: white;
+text-align: center;
+background: url({% static 'design/header.png' %}) 50% 0 ;
+
+  
+}
+
+.contenido{
+
+margin-left: auto;
+margin-right: 200px;
+
+
+}
+
+.text{
+
+margin: 70px;
+font-size: 24px;
+
+
+}
+
+
+</style>
+  <div class="title">
+    <h1 style="text-align:left;", class="	glyphicon glyphicon-phone"> Creditos</h1  >
+  </div>
+    <div class="contenido">
+    
+      
+      <br>
+     <div class="text">
+       <li  class="">Diseno: Javier Roel</li>
+       <br>
+       <li  class="">Desarrollo: Javier Roel</li>
+      </div>
+    <div>
+    
+
+{% endblock %}

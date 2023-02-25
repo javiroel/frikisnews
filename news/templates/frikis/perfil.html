@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<style>
+
+  .title{
+
+  text-align: center;
+  margin: 0;
+  color: white;
+  background: url({% static 'design/header.png' %}) 50% 0 ;
+  height: auto;
+  
+
+
+  }
+
+ .contenido{
+   margin: 70px;
+   margin-left: 10%;
+   font-size: 18px;
+   text-align: left;
+   border-style: dotted;
+
+ }
+ 
+ .contenido span{
+
+ font-weight: bold;
+
+ }
+
+
+.parrafo{
+
+  margin: 50px;
+  margin-left: 0px;
+  padding-left: 5%;
+  border-style: dotted;
+  
+  
+
+}
+
+.parrafo h5 {
+
+  margin: 50px;
+  font-size: 16px;
+  margin-left: 12px;
+  padding-left: 10%;
+
+}
+
+.text {
+
+margin: 10px;
+font-size: 14px;
+padding-left: 0%;
+
+}
+
+</style>
+    
+    <div class="title">
+      <h1 class="glyphicon glyphicon-user"> Perfil</h1>
+    </div>
+
+    <div class="contenido">
+    
+     <span> Nombre: </span> Javier Roel
+     <br>
+     <span> Ocupación:</span> Youtuber 
+     <br>
+     <span> Breve biografía:</span>
+     <br>
+     <p> Mi nombre es Javier, me dedico a hacer videos de Youtube sobre las principales norticias de frikis (tecnologia, ciencia,etc).</p>
+     <span> Redes Sociales:</span> 
+     <br>
+     Instagram: @frikisenelaire
+     <br>
+     Mail: frikisenelaire@gmail.com
+
+    </div>
+    
+
+{% endblock %}

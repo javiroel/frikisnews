@@ -1,0 +1,60 @@
+
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+
+<style>
+
+.content
+
+{
+
+ margin-left: 200px;
+ margin-right: 200px;  
+ text-align: left;
+ background-color: rgb(234, 234, 234);
+ border-radius: 2%;
+ margin-top: 30px;
+
+}
+
+.content div{
+
+margin: 20px;
+
+
+}
+
+</style>
+
+<div class="content">
+
+ <div>
+
+    <h1 class="glyphicon glyphicon-cloud-upload",style="text-align: center;"> News-Upload</h1>
+
+    <form class="form1" method="post" action="{% url 'creanews' %}"> 
+    
+    {% csrf_token %}
+     <table class="formn">
+
+    {{ form | crispy }}
+
+    </table>
+
+ 
+    
+    <input type="submit" class="btn btn-primary" value="Guardar noticia">
+
+
+    </form>
+ </div>  
+ <h6 style="margin: 10px;">Por favor validar la verecidad de las noticias</h6>
+ <br>
+</div>
+
+{% endblock %}
