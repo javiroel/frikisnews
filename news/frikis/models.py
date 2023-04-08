@@ -7,9 +7,12 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Permis
 
 # Create your models here.
 class tusnoticias(models.Model):
-    titulo=models.CharField(max_length=30)
-    noticia_text = models.CharField(max_length=200)
+    titulo=models.CharField(max_length=100)
+    subtitulo=models.CharField(max_length=100)
+    noticia_text = models.CharField(max_length=2000)
     pub_date = models.DateTimeField('date published')
+    image = models.ImageField(upload_to='media' , blank=True, null=True)
+    autor=models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return f"{self.noticia_text} - {str(self.pub_date)}-{str(self.titulo)}"

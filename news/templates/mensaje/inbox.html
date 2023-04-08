@@ -1,0 +1,108 @@
+
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+
+<style>
+
+.contenido{
+
+width: 70%;
+background-color: white;
+padding-left: 2%;
+margin-left: 15%;
+border-style: dotted;
+}
+
+.noticia{
+
+
+margin-left: 0;
+margin-right: 0;
+background-color: white;
+padding: 12px;
+
+}
+
+.newstitle{
+
+font-size: 32px;
+text-align: center;
+
+
+}
+
+.foto{
+
+margin: 5px;
+width: 80px;
+height: auto;
+
+
+}
+
+.foto1{
+
+margin: 5px;
+width: 20%;
+height: auto;
+
+}
+
+.listnews{
+
+
+font-size: 18px;
+font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+
+.descripcion{
+
+font-size: 16px;
+
+
+}
+
+</style>
+
+<img src="{% static 'design/perfil.jpg' %}" alt="" class="foto">
+
+<div class="contenido">
+
+
+  <h1 style="text-align: center;font-family: Arial, Helvetica, sans-serif;", class="">Mensajería</h1>
+
+  <br>
+  <div class="noticia">
+    
+
+    <!-- perfil.html -->
+
+    {% for mensaje in mensajes %}
+
+    <li> De: {{mensaje.remitente.username}} </li>
+    <li> Para: {{mensaje.destinatario.username}} </li>
+    <li> Fecha: {{mensaje.fecha_envio}}</li>
+     <br>
+     <br>
+    <table class="noticia">asunto: {{mensaje.contenido}} </table>
+
+
+    {% endfor %}
+
+
+</div>
+
+
+{% endblock %}
+
+
+
+
+
+

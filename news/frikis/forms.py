@@ -9,19 +9,26 @@ class CrearNoticia(forms.ModelForm):
 
       class Meta:
         model = tusnoticias
-        fields = ['id','titulo','noticia_text','pub_date']
+        fields = ['id','titulo','subtitulo','noticia_text','pub_date','image']
 
         widgets = {
 
         'titulo': forms.TextInput(attrs={'class':'form-control'}),  
 
+        'subtitulo': forms.TextInput(attrs={'class':'form-control'}),
+
        'noticia_text': forms.Textarea(attrs={'class': 'form-control'}),
 
+       'image': forms.ClearableFileInput(attrs={'multiple': True}),
+
         }
+
+        image= forms.ImageField()
 
         lebels = {
                    
           'titulo': 'Titulo', 
+          'subtitulo': 'Subtitulo',
           'noticia_text' : 'Noticia',
         
 
@@ -39,11 +46,13 @@ class EditaNoticia(forms.ModelForm):
 
       class Meta:
         model = tusnoticias
-        fields = ['titulo','noticia_text']
+        fields = ['titulo','subtitulo','noticia_text','image']
 
         widgets = {
 
         'titulo': forms.TextInput(attrs={'class':'form-control'}),  
+        
+        'subtitulo': forms.TextInput(attrs={'class':'form-control'}),
 
        'noticia_text': forms.Textarea(attrs={'class': 'form-control'}),
 
@@ -52,6 +61,7 @@ class EditaNoticia(forms.ModelForm):
         lebels = {
                    
           'titulo': 'Titulo', 
+          'subtitulo': 'Subtitulo',
           'noticia_text' : 'Noticia',
         
 
@@ -62,3 +72,4 @@ class ContactForm(forms.ModelForm):
     class Meta:
         model = Contact
         fields = ['name', 'email', 'message']
+

@@ -1,0 +1,112 @@
+
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+
+<style>
+
+.contenido{
+
+width: 80%;
+background-color: white;
+padding-left: 2%;
+margin-left: 10%;
+border-style: dotted;
+font-size: 24px;
+}
+
+.noticia{
+
+
+margin-left: 0;
+margin-right: 0;
+background-color: white;
+padding: 12px;
+
+}
+
+.newstitle{
+
+font-size: 32px;
+text-align: center;
+
+
+}
+
+.foto{
+
+margin: 5px;
+width: 80px;
+height: auto;
+
+
+}
+
+.foto1{
+
+margin: 5px;
+width: 50%;
+margin-left: 25%;
+height: auto;
+
+}
+
+.listnews{
+
+
+font-size: 18px;
+font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+
+</style>
+
+<img src="{% static 'design/latest-news-icon.webp' %}" alt="" class="foto">
+
+<div class="contenido">
+
+
+  <h1 style="text-align: center;font-family: Arial, Helvetica, sans-serif;", class="">{{noticia.titulo}} </h1>
+
+  <h2 style="font-size: 18px;text-align: center;"> {{noticia.subtitulo}}</h2> 
+
+
+  <br>
+  <div class="noticia">
+    
+     <h3 style="text-align: left;" class="newstitle">
+
+     </h3>
+
+ 
+  
+ <img src="{{noticia.image.url}}" alt="" class="foto1">
+ <br>
+
+  <br> 
+<p class="contenido"> {{noticia.noticia_text}} </p>
+<br>
+<p class="descripcion">autor: {{noticia.autor}} </p> 
+<p class="descripcion">Fecha y hora: {{noticia.pub_date}} </p> 
+
+<p  class="listnews">
+
+    
+
+    </p>
+
+    
+
+
+
+  </div>
+
+</div>
+       
+
+
+{% endblock %}

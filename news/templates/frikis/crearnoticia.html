@@ -37,7 +37,7 @@ margin: 20px;
 
     <h1 class="glyphicon glyphicon-cloud-upload",style="text-align: center;"> News-Upload</h1>
 
-    <form class="form1" method="post" action="{% url 'creanews' %}"> 
+    <form class="form1" method="post" action="{% url 'creanews' %}" enctype="multipart/form-data"> 
     
     {% csrf_token %}
      <table class="formn">
@@ -46,8 +46,8 @@ margin: 20px;
 
     </table>
 
- 
-    
+    <input type="file" name="image">
+    <br>
     <input type="submit" class="btn btn-primary" value="Guardar noticia">
 
 

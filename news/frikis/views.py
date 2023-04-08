@@ -21,21 +21,23 @@ def index(request):
     context = {'latest_news': latest_news}
     return render(request, 'frikis/index.html', context)
 
-def noticias(request, tusnoticias_id):
-    return HttpResponse("Estos son los resultados de las noticias %s."% tusnoticias_id )  
+ #def noticias(request, tusnoticias_id):
+    #return HttpResponse("Estos son los resultados de las noticias %s."% tusnoticias_id )  
 
 @login_required
 def creanews(request):
      
     if request.method == "POST":
-        form=CrearNoticia(request.POST) 
+        form=CrearNoticia(request.POST,request.FILES)
         if form.is_valid():
-          noticia=form.save()   
+          noticia=form.save() 
+          noticia.autor=request.user  
+          noticia.save()
           return redirect('creanews')
 
     else:
    
-     form = CrearNoticia(initial={'pub_date':datetime.datetime.now()})
+     form = CrearNoticia(initial={'pub_date':datetime.datetime.now() , 'autor':request.user})
 
     return render(request,'frikis/crearnoticia.html',{'form':form})
 
@@ -45,7 +47,7 @@ def registro(request):
         form = FormularioRegistro(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('login')
+            return redirect('editar_perfil')
     else:
         form = FormularioRegistro()
     return render(request, 'frikis/registro.html', {'form': form})
@@ -131,3 +133,8 @@ def delete(request, tusnoticias_id):
     item = get_object_or_404(tusnoticias, id=tusnoticias_id)
     item.delete()
     return redirect('listar')
+
+def nota (request, tusnoticias_id):
+    noticia = get_object_or_404(tusnoticias, id=tusnoticias_id )
+    context = {'noticia':noticia}
+    return render(request, 'frikis/nota.html', context)

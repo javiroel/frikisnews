@@ -45,6 +45,14 @@ height: auto;
 
 }
 
+.foto1{
+
+margin: 5px;
+width: 50%;
+height: auto;
+
+}
+
 .listnews{
 
 
@@ -69,12 +77,27 @@ font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans
 
     {{ tusnoticias.titulo }} </h3>
 
+    {% if tusnoticias.image %}
+
+    <img src="{{tusnoticias.image.url}}" alt="" class="foto1">
+     
+    {% endif %}
 
     <p  class="listnews">
 
      {{ tusnoticias.noticia_text }}
 
     </p>
+
+    {{ tusnoticias.autor }}
+
+    <br>
+
+    {{ tusnoticias.pub_date }}
+    <br>
+    <br> 
+    <td><a class="btn-btn-warning" href="{% url 'nota' tusnoticias.id %}">Ver Noticia</a> </td>
+
     {% endfor %}
 
   </div>

@@ -1,0 +1,114 @@
+
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+
+<style>
+
+.contenido{
+
+width: 70%;
+background-color: white;
+padding-left: 2%;
+margin-left: 15%;
+border-style: dotted;
+}
+
+.noticia{
+
+
+margin-left: 0;
+margin-right: 0;
+background-color: white;
+padding: 12px;
+
+}
+
+.newstitle{
+
+font-size: 32px;
+text-align: center;
+
+
+}
+
+.foto{
+
+margin: 5px;
+width: 80px;
+height: auto;
+
+
+}
+
+.foto1{
+
+margin: 5px;
+width: 20%;
+height: auto;
+
+}
+
+.listnews{
+
+
+font-size: 18px;
+font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+
+.descripcion{
+
+font-size: 16px;
+
+
+}
+
+</style>
+
+<img src="{% static 'design/perfil.jpg' %}" alt="" class="foto">
+
+<div class="contenido">
+
+
+  <h1 style="text-align: center;font-family: Arial, Helvetica, sans-serif;", class="">Perfil del usuario</h1>
+
+  <br>
+  <div class="noticia">
+    
+
+    <!-- perfil.html -->
+
+  {% if user_profile.imagen_perfil %}
+
+  <img src="{{ user_profile.imagen_perfil.url }}" alt="Foto de perfil", class="foto1"> 
+
+  {% endif %}
+
+   <br>
+   <br>
+  <p style="font-weight: bold; font-size: 18px;">Usuario: {{ user.username }}</p>
+  <p class="descripcion">Correo electrónico: {{ user.email }}</p>
+  <p class="descripcion">Ocupación: {{user_profile.formacion}} </p>
+  <p class="descripcion">Redes Sociales: {{user_profile.redes_sociales}} </p> 
+  <p class="descripcion">Hobbies: {{user_profile.hobbies}} </p>
+  <br>
+  <br>
+  <td><a class="btn-btn-warning" href="{% url 'editar_perfil' %}">Editar</a> </td>
+
+
+
+  
+   
+    
+
+  </div>
+
+</div>
+       
+
+{% endblock %}

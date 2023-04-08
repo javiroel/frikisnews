@@ -29,10 +29,12 @@
          <ul class="dropdown-menu">
           <li><a href="{% url 'creanews' %}">cargar</a></li>
           <li><a href="{% url 'listar' %}">Modificar</a></li>
-          <li><a href="{% url 'chat-page' %}">Chat</a></li>
+          <li><a href="{% url 'inbox' %}">Inbox</a></li>
+          <li><a href="{% url 'outbox' %}">Outbox</a></li>
+          <li><a href="{% url 'enviar_mensaje' %}">Enviar Mensaje</a></li>
         </ul>
 
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> @{{ user.username }}</a></li>
+        <li><a href="{% url 'perfil_usuario' %}"><span class="glyphicon glyphicon-user"></span> @{{ user.username }}</a></li>
 
         {% endif %}
       </li>
