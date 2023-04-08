@@ -47,7 +47,7 @@ def registro(request):
         form = FormularioRegistro(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('editar_perfil')
+            return redirect('inicio')
     else:
         form = FormularioRegistro()
     return render(request, 'frikis/registro.html', {'form': form})
